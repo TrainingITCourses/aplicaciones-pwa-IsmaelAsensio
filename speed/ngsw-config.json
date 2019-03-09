@@ -4,6 +4,7 @@
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
@@ -18,10 +19,34 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/assets/icons/**"
         ]
       }
     }
+  ], "dataGroups":[
+    {
+      "name": "cache-first",
+      "urls":[
+        "http://127.0.0.1:8080/search/**"
+      ],
+      "cacheConfig":{
+        "strategy":"performance",
+        "maxSize":10,
+        "maxAge":"1d"
+      }
+    },
+    {
+      "name": "server-first",
+      "urls":[
+        "http://127.0.0.1:8080/assets/data/**"
+      ],
+      "cacheConfig":{
+        "strategy":"freshness",
+        "maxSize":500,
+        "maxAge":"1m",
+        "timeout":"5s"
+      }
+    }
+
   ]
 }

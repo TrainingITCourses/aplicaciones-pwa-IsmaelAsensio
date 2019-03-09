@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let launch of launches">
+    <span>Id vuelo: {{launch.id}}  --  Nombre vuelo: {{launch.name}} -- Estado: {{launch.status}}</span>
+    <span *ngIf="tieneAgencia(launch)"> -- Agencia: {{launch.lsp.name}}</span>
+    <span *ngIf="tieneMisiones(launch)">
+      <p>          MISSIONS</p>
+      <p *ngFor="let mission of missions">
+        <span>          * {{mission.name}}</span>
+      </p>
+    </span>
+  </li>
+</ul>
